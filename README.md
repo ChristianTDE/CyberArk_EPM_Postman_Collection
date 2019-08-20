@@ -9,6 +9,6 @@ The EPM Web Services SDK enables you to perform activities on EPM objects via a 
 
 ## Changes
 
-6 May, 2019 - The original version of this Postman collection can be found at [ChuckMcAllister/CyberArk-EPM-REST-API-Postman-Collection[(https://github.com/ChuckMcAllister/CyberArk-EPM-REST-API-Postman-Collection)
+6 May, 2019 - The original version of this Postman collection can be found at https://github.com/ChuckMcAllister/CyberArk-EPM-REST-API-Postman-Collection
 
 20 Aug, 2019 - The changes in the Postman collection in this repository reflect the new EPM Rest API capabilities to manage policies.
