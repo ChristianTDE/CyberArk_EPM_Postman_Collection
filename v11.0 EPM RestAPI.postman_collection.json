@@ -38,6 +38,23 @@
 				},
 				{
 					"name": "SaaS Server Version example",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebe13420-1868-408b-ad32-edc4634cce56",
+								"exec": [
+									"pm.test(\"HTTP Status code is 200\", function() {pm.expect(pm.response.code).to.equal(200);});",
+									"",
+									"(pm.response.code === 200 ? pm.test :pm.test.skip)(\"Response body is empty\", function(){",
+									"    var data = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable(\"Version\", data.Version);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1136,7 +1153,8 @@
 							"raw": "{\n\t\"Duration\": 60,\n\t\"PolicyType\": 12,\n\t\"Name\": \"New Policy\",\n\t\"Audit\": true,\n\t\"Justification\": \"User Request\",\n\t\"Termination\": true,\n\t\"IncludeUsers\": [\n\t\t{\n\t\t\t\"UserName\": \"Win10\\\\Username\",\n\t\t\t\"Sid\": \"\"\n\t\t}\n\t],\n\t\"IncludeComputerGroups\": [\n\t\t{\n\t\t\t\"Id\": \"5fb75c0d-03b4-49a9-ade2-edb1e4daeeb4\"\n\t\t}\n\t],\n\t\"IncludeADComputerGroups\": [\n\t\t{\n\t\t\t\"GroupName\": \"Group\\\\Name\",\n\t\t\t\"Sid\": \"\"\n\t\t}\n\t],\n\t\"LocalGroups\": [\n\t\t{\n\t\t\t\"GroupName\": \"OS_Group\\\\Name\"\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policies",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policies",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1177,7 +1195,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policies?offset={{Offset}}&limit={{Limit}}",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policies?offset={{Offset}}&limit={{Limit}}",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1242,7 +1261,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policies/{{PolicyID}}",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policies/{{PolicyID}}",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1262,7 +1282,7 @@
 				{
 					"name": "Update Policy - For Ad Hoc User Elevation Policy only - \"AdHocElevate\" Policy type",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -1288,7 +1308,8 @@
 							"raw": "{\r\n    \"Duration\": 60,\r\n    \"PolicyType\": 12,\r\n    \"Name\": \"New Policy\",\r\n    \"Audit\":true,\r\n    \"Justification\": \"User Request\",\r\n    \"TerminateProcesses\": true,\r\n    \"IncludeUsers\": [\r\n        {\r\n            \"UserName\": \"Win10\\\\UserName\",\r\n            \"Sid\":\"\"\r\n        }\r\n    ],\r\n    \"IncludeComputersInSet\": [\r\n        {\r\n            \"Id\": \"0ff92ffa-5097-4e00-adec-dc96ac5bbdb1\"\r\n        }\r\n    ],\r\n    \"IncludeComputerGroups\":[\r\n        {\r\n            \"Id\": \"5fb75c0d-03b4-49a9-ade2-edb1e4daeeb4\"\r\n        }\r\n    ],\r\n    \"IncludeADComputerGroups\": [\r\n        {\r\n             \"GroupName\":\"Group\\\\Name\",\r\n             \"Sid\":\"\"\r\n        }\r\n    ],\r\n    \"LocalGroups\": [\r\n        {\r\n            \"GroupName\": \"OS_Group\\\\Name\"\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1334,8 +1355,9 @@
 							"raw": "{\r\n \"PolicyType\": \"AdvancedWinApp\",\r\n \"Name\": \"My Advanced Policy\",\r\n \"Activation\":{\r\n  \"Enabled\": true,\r\n  \"DeactivateDate\":{\r\n   \"Year\":2025,\r\n   \"Month\":5,\r\n   \"Day\":30,\r\n   \"Hours\":8,\r\n   \"Minutes\":40,\r\n   \"Seconds\":0\r\n  }\r\n },\r\n \"IncludeComputersInSet\":[ \r\n {\r\n  \"Id\": \"2469aae5-67c6-427c-b5ee-32d6add0523c\" \r\n }\r\n ],\r\n \"ExcludeComputersInSet\":[\r\n {\r\n  \"Id\": \"abc2469a-6a7c-f42c-5b5e-3245332d6add\" \r\n }\r\n ],\r\n \"IncludeComputerGroups\":[ \r\n {\r\n  \"Id\": \"2469aae5-67c6-427c-b5ee-32d6add0523c\" \r\n }\r\n ],\r\n \"ExcludeComputerGroups\":[ \r\n {\r\n  \"Id\": \"abc2469a-6a7c-f42c-5b5e-3245332d6add\" \r\n }\r\n ],\r\n \"IncludeUsers\":[ \r\n {\r\n  \"UserName\":\"elirazOwnDomain\\\\ElirazUserTest\"\r\n }\r\n ],\r\n \"IncludeUserGroups\":[ \r\n {\r\n  \"Sid\":\"S-1-5-32-544\"  \r\n }\r\n ],\r\n \"IncludeADComputerGroups\":[ \r\n {\r\n  \"GroupName\":\"ADEliraz\\\\ADEliraz\" \r\n }\r\n ],\r\n \"ExcludeADComputerGroups\":[ \r\n {\r\n  \"Sid\":\"S-1-5-83-0\" \r\n }\r\n ],\r\n \"Applications\":[ \r\n {\r\n  \"Type\": \"EXE\",\r\n  \"Checksum\": \"SHA1:5FF30FF14984820C01941F767CE47F0F39BDE265\",\r\n  \"FileName\": \"grep.exe\",\r\n  \"FileSize\": 135680,\r\n  \"Location\": \"Fixed\"\r\n },\r\n {\r\n  \"Type\": \"EXE\",\r\n  \"Description\": \"Command-Based Script\",\r\n  \"FileName\": \"cscript.exe\",\r\n  \"FileNameCompare\": \"Exactly\",\r\n  \"Location\": \"%SystemRoot%\",\r\n  \"Signature\": \"Microsoft\",\r\n  \"SignatureCompare\": \"Prefix\"\r\n },\r\n {\r\n  \"Type\": \"EXE\",\r\n  \"Location\": \"c:\\\\Users\\\\elirazd\\\\Documents\\\\tmp\",\r\n  \"LocationCompare\": \"WithSubfolders\",\r\n  \"FileName\": \"WinMD5.exe\",\r\n  \"Owner\": \"il\\\\elirazd\",\r\n  \"MinFileVersion\": \"6.1\",\r\n  \"MaxFileVersion\": \"8.2.5\"\r\n }\r\n ]\r\n}"
 						},
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
-							"host": [
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
+							"protocol": "https",
+							[host": [
 								"{{Address}}"
 							],
 							"path": [
@@ -1371,7 +1393,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1413,7 +1436,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Policies/Ransomware?Mode=Enable",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policies/Ransomware?Mode=Enable",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1467,7 +1491,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Sets/{{SetID}}/Computers?Offset={{Offset}}&Limit={{Limit}}",
+							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Computers?Offset={{Offset}}&Limit={{Limit}}",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],
@@ -1520,7 +1545,8 @@
 							}
 						],
 						"url": {
-							"raw": "{{Address}}/EPM/API/Set/{{SetID}}/ComputerGroups",
+							"raw": "https://{{Address}}/EPM/API/Set/{{SetID}}/ComputerGroups",
+							"protocol": "https",
 							"host": [
 								"{{Address}}"
 							],

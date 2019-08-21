@@ -9,6 +9,13 @@ The EPM Web Services SDK enables you to perform activities on EPM objects via a 
 
 ## Changes
 
-6 May, 2019 - The original version of this Postman collection can be found at https://github.com/ChuckMcAllister/CyberArk-EPM-REST-API-Postman-Collection
+**6 May, 2019** - Repo creation
+- The original version of this Postman collection can be found at https://github.com/ChuckMcAllister/CyberArk-EPM-REST-API-Postman-Collection
 
-20 Aug, 2019 - The changes in the Postman collection in this repository reflect the new EPM Rest API capabilities to manage policies.
+**20 Aug, 2019** - Initial commit of v11.0 EPM RestAPI.postman_collection.json
+- The changes in the Postman collection in this repository reflect the new EPM Rest API capabilities to manage policies.
+
+**21 Aug, 2019** - changes to README.md and v11.0 EPM RestAPI.postman_collection.json
+- Modifications to v11.0 EPM RestAPI.postman_collection.json fixing the URLs changing {{Address}} to https://{{Address}} on the APIs where it was missing
+- Changing the HTTP Method from POST to PUT on the Update Policy - For Ad Hoc User Elevation Policy only - "AdHocElevate" Policy type API call.
+- Added a Test to the SaaS Server Version example API call to setup an environment variable called "Version"
