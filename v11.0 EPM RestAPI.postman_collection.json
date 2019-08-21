@@ -1357,7 +1357,7 @@
 						"url": {
 							"raw": "https://{{Address}}/EPM/API/Sets/{{SetID}}/Policy/{{PolicyID}}",
 							"protocol": "https",
-							[host": [
+							"host": [
 								"{{Address}}"
 							],
 							"path": [
