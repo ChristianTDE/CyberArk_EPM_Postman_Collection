@@ -20,3 +20,7 @@ The EPM Web Services SDK enables you to perform activities on EPM objects via a 
 - Changing the HTTP Method from POST to PUT on the Update Policy - For Ad Hoc User Elevation Policy only - "AdHocElevate" Policy type API call.
 - Added a Test to the SaaS Server Version example API call to setup an environment variable called "Version"
 - Include a Postman environment file to be imported and used with v11.0 EPM RestAPI.postman_collection.json
+
+**22 Aug, 2019** - Reformatting the collection
+- Renamed and rearranged the order based on the documentation at: https://documenter.getpostman.com/view/998920/RzZ9Gz1U?bs=true&version=latest#4b7b0681-3d90-4d67-b746-eb70e812be34
+- Got tests working to fill in some of the environment variables i.e. the {{Address}}, {{Token}}, and {{Version}}. Not sure about adding tests for the other calls as they have the capability of returning more than one object in the response.
